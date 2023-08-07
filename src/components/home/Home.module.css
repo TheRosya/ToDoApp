@@ -1,0 +1,11 @@
+.task_no_found {
+  font-size: 36px;
+  color: white;
+
+  /* Устанавливаем выравнивание по центру */
+  text-align: center;
+
+  /* Убираем отступы вокруг элемента */
+  margin: 0;
+  padding: 0;
+}

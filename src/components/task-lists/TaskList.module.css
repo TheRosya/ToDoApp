@@ -1,0 +1,28 @@
+.relative_date {
+    font-size: 30px;
+    color: white;
+    margin-top: 32px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid gray;
+}
+
+.task_no_found {
+    font-size: 36px;
+    color: white;
+  
+    /* Устанавливаем выравнивание по центру */
+    text-align: center;
+  
+    /* Убираем отступы вокруг элемента */
+    margin: 0;
+    padding: 0;
+}
+
+
+
+  
+
+  
+ 
+  
+  
