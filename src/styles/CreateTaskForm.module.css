@@ -1,0 +1,112 @@
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(10, 10, 10, 0.7);
+
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+
+.container {
+    background-color: #212529;
+    width: 35rem;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    position: relative;
+    min-width: max-content;
+    border-radius: 16px;
+}
+
+.close_button {
+    border: 1px solid #212529;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    color: gray;
+    font-weight: 600;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 25%;
+}
+
+.close_button:hover {
+    border: 1px solid gray;
+}
+
+.input {
+    border: 1px;
+    background-color: #212529;
+    border-radius: 0.25rem;
+    width: 100%;
+    padding: 6px;
+    color: #ced4da;
+    font-size: 28px;
+}
+
+.input::placeholder {
+    color: gray;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.textarea {
+    border: 1px;
+    background-color: #212529;
+    border-radius: 0.25rem;
+    width: 100%;
+    padding: 6px;
+    color: #ced4da;
+    resize: none;
+    overflow: auto;
+}
+
+.textarea::placeholder {
+    color: gray;
+}
+
+.textarea:focus {
+    outline: none;
+}
+
+.add_button {
+    background-color: #7161ef;
+    color: white;
+    font-weight: 600;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.5rem;
+    transition: 0.3s ease-out;
+
+    
+
+}
+.add_button:hover {
+    background-color: #5e548e;
+}
+
+.add_button:disabled {
+    /* Стили неактивной кнопки */
+    background-color: gray;
+    color: #383838;
+  }
+
+.add_button:hover:disabled {
+    background-color: gray;
+}
+
+
+

@@ -1,20 +1,21 @@
-import TaskItem from "../task-item/TaskItem";
-import { invoke } from '@tauri-apps/api/tauri'
-import styles from './TaskList.module.css'
+import TaskItem from "./TaskItem";
+import styles from './../styles/TaskList.module.css'
+import DateInfo from "./DateInfo";
 
 
 const TaskList = ({ tasks, setTasks }) => {
 
-    
     // Функция для форматирования даты на русском языке
     const formatDate = (date) => {
         const options = {
-            year: 'numeric',
-            month: 'long',
+            weekday: 'short',
+            month: 'short',
             day: 'numeric',
     };
+    let formattedDate = date.toLocaleDateString('ru-RU', options);
 
-    return date.toLocaleDateString('ru-RU', options);
+    formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+    return formattedDate;
   };
 
     // Функция для отображения блока с задачами для конкретной даты
@@ -23,7 +24,7 @@ const TaskList = ({ tasks, setTasks }) => {
 
         return (
         <div key={date.toDateString()}>
-            <h3 className={styles.relative_date}>{formatDate(date)}</h3>
+            <h3 className={styles.relative_date}><DateInfo date={date} />{formatDate(date)}</h3>
             {tasksForDate.length > 0 ? (
             <ul>
                 {tasksForDate.map(task => (

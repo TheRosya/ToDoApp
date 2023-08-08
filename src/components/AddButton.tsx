@@ -1,4 +1,4 @@
-import styles from './AddButton.module.css';
+import styles from './../styles/AddButton.module.css';
 
 const AddButton = ({isOpen, togglePopup}) => {
     

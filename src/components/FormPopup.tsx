@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import CreateTaskform from '../create-task-form/CreateTaskForm';
-import styles from "./FormPopup.module.css"
+import CreateTaskform from './CreateTaskForm';
+import styles from "./../styles/FormPopup.module.css"
 
 const clearData = {
     title: '',

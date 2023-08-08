@@ -1,8 +1,0 @@
-.calendar_icon {
-    margin-bottom: 15px;
-    width: 10%;
-    height: 10%;
-    background-image: url("https://icons8.ru/icon/23/календарь"); /* Замените на свою иконку календаря */
-    background-repeat: no-repeat;
-    cursor: pointer;
-}

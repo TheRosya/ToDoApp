@@ -1,0 +1,37 @@
+.container {
+    background-color: #212529;
+}
+
+.calendar_icon {
+    padding-left: 5rem;
+    font-size: 28px;
+    color: #adb5bd;
+    cursor: pointer;
+    outline: none;
+    background-color: #212529;
+}
+
+
+.select {
+    appearance: none;
+    font-size: 24px;
+    padding: 4px;
+    padding-left: 1rem;
+
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: #212529;
+    color: gray;
+    outline: none;
+    
+    transition: all .5s ease;
+}
+
+.select:hover {
+    cursor: pointer;
+}
+
+
+.datePicker {
+    display: flex;
+}

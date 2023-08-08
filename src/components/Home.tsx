@@ -1,12 +1,9 @@
-import { useEffect, useState, useRef } from "react";
-import styles from "./Home.module.css";
-import TaskItem from "../task-item/TaskItem.tsx";
+import { useEffect, useState } from "react";
 import { invoke } from '@tauri-apps/api/tauri'
-import FormPopup from "../form-popup/FormPopup.tsx";
-import Header from "../header/Header.tsx";
-import AddButton from "../add-button/AddButton.tsx";
-import DateDescription from "../date-description/DateDescription.tsx";
-import TaskList from "../task-lists/TaskList.tsx";
+import FormPopup from "./FormPopup.tsx";
+import Header from "./Header.tsx";
+import AddButton from "./AddButton.tsx";
+import TaskList from "./TaskList.tsx";
 
 function Home() {
   

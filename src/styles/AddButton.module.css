@@ -1,5 +1,5 @@
 .btn {
-    background-color: #EF4444;
+    background-color: #495057;
     color: #fff;
     font-weight: bold;
     padding-top: 1.25rem;
@@ -12,20 +12,15 @@
     bottom: 1rem;
     position: fixed;
     left: 50%;
+    transition: 0.2s ease-out;
 } 
 
 .btn:hover {
-    background-color: #DC2626;
+    background-color: #343a40;
 }
 
 .btn:focus {
     outline: none;
-    box-shadow: 0 0 2px 2px #F87171;
 }
 
-.btn:focus:hover {
-    background-color: #F87171;
-    box-shadow: 0 0 2px 2px #F87171;
-  }
-  
   
