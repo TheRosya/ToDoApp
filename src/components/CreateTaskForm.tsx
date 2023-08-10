@@ -1,96 +1,103 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { invoke } from '@tauri-apps/api/tauri'
-import Calendar from "./Calendar";
+import CalendarComponent from "./Calendar";
 import styles from './../styles/CreateTaskForm.module.css'
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 interface Data {
-  title: string | null;
-  shortDescription: string | null;
+  title: string;
+  shortDescription: string;
   date: Date | null;
 }
 
 const clearData = {
-  title: null,
-  shortDescription: null,
-  date: new Date(),
+  title: "",
+  shortDescription: "",
+  date: null,
 }
 
-const CreateTaskform = ({ setTasks, togglePopup}) => {
-    
-  const [data, setData] = useState<Data>(
-    clearData
-  );
+const clearOption = {value: 'not choosed', label: 'Срок выполнения'}
 
-  const [isFormValid, setIsFormValid] = useState(true);
+
+const CreateTaskform = ({ setTasks, setVisible}) => {
+
+
+  const options = [
+    {value: 'today', label: 'Сегодня'},
+    {value: 'tomorrow', label: 'Завтра'},
+    {value: 'afterTomorrow', label: 'Послезавтра'},
+    {value: 'custom', label: 'Другая дата'},
+  ]
+  
+  const [visibleDate, setVisibleDate] = useState(false);
+  const [data, setData] = useState<Data>(clearData);
+  const [selectedOption, setSelectedOption] = useState(clearOption);
+
 
   const CreateTask = e => {
-  
     e.preventDefault();
-    if (!data.title) {
-      setIsFormValid(false);
-      return;
-    } else {
-      setIsFormValid(true);
-    }
 
     setTasks(prev => {
-      let newtasks = [...prev, 
-        {id: prev.length + 1, ...data }
-      ]
-      const sortedList = newtasks.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-      invoke<String>("write_json_to_file", {content: JSON.stringify(sortedList)})
-        .then(console.log)
-        .catch(console.error)
-      return sortedList;
+      return [...prev, {id: prev.length + 1, ...data } ]
     })
-    togglePopup();
-    setData(clearData)
+    setVisible(false);
+    setData(clearData);
+    setSelectedOption(clearOption);
   }    
 
+
     return (
-      <div className={styles.body}>
-        
         <div className={styles.container}>
-          <button
-            id='close_button'
-            onClick={togglePopup}
-            className={styles.close_button}
-            type="button"
-            >
-            X
-          </button>
-          <div className="mb-4">
+          <div>
+            <button
+              id='close_button'
+              onClick={() => setVisible(false)}
+              className={styles.close_button}
+              type="button"
+              >
+              <FontAwesomeIcon icon={faXmark} className={styles.close_icon}/>
+            </button>
+          </div>
+          <div>
             <input id='title' placeholder="Название задачи" onChange={
               (event) => setData(prev => ({...prev, title : event.target.value}))}
               className={styles.input}
+              value={data.title}
             /><br />
-          </div>
-          <div className="mb-4">
             <textarea id='shortDescription' placeholder="Описание" onChange={
               (event) => {
                 setData(prev => ({...prev, shortDescription : event.target.value}));
               }
             }
               className={styles.textarea}
-              rows={4}
+              rows={8}
+              value={data.shortDescription}
             /><br />
           </div>
-          <Calendar data={data} setData={setData}/>
-          <div style={{textAlign: 'right'}}>
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <CalendarComponent
+              options={options}
+              data={data}
+              setData={setData}
+              selectedOption={selectedOption}
+              setOption={setSelectedOption}
+              visibleDate={visibleDate}
+              setVisibleDate={setVisibleDate}
+              />
             <button id='Add'
               onClick={(e) => {
                 CreateTask(e);
               }}
-              disabled={data.title ? false : true}
+              disabled={data.title && data.date !== null ? false : true}
               className={styles.add_button}
               type="button"
             >
               Создать
             </button>
           </div>
-      </div>
-      </div>
+        </div>
     )
 }
 

@@ -39,8 +39,6 @@ function TaskItem ({ task, setTasks }) {
   };
 
     const handleFinishTask = () => {
-      // setFadeOut(true);
-      // setTimeout(() => handleDeleteTask(task.id), 300);
       handleDeleteTask(task.id)
 
     };
@@ -64,8 +62,8 @@ function TaskItem ({ task, setTasks }) {
           <button className={styles.btn} onClick={handleFinishTask}>
             Завершить
           </button>
-        </div>
-      </li>
+      </div>
+    </li>
     )
 } 
 

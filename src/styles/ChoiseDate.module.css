@@ -1,0 +1,108 @@
+.container {
+    background-color: #212529;
+    min-width: auto;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    position: relative;
+    min-width: max-content;
+    border-radius: 16px;
+}
+
+.back_button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 1rem;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    max-width: 150px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.icon_tomorrow {
+    font-size: 26px;
+    color: #ffaa00;
+    transition: 0.3s ease;
+}
+
+.button span {
+    font-size: 26px;
+    color: #6c757d;
+    margin-left: 12px;
+    transition: 0.3s ease;
+}
+
+.button:hover span,
+.button:hover .icon_tomorrow {
+    color: #ffaa00;
+}
+
+
+
+.calendar {
+    font-size: 24px;
+    border-top: 1px solid gray;
+    padding-top: 12px;
+    color: gray;
+}
+
+.footer {
+    text-align: right;
+}
+
+.add_button {
+    height: fit-content;
+    background-color: #7161ef;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 0.5rem;
+    transition: 0.3s ease-out;
+
+}
+
+.add_button:hover {
+    background-color: #5232ff;
+}
+
+.add_button:disabled {
+    /* Стили неактивной кнопки */
+    background-color: gray;
+    color: #383838;
+}
+
+.add_button:hover:disabled {
+    background-color: gray;
+}
+
+.my_selected:not([disabled]) { 
+    font-weight: bold; 
+    border: 2px solid currentColor;
+  }
+.my_selected:hover:not([disabled]) { 
+border-color: blue;
+color: blue;
+}
+.my_today { 
+font-weight: bold;
+font-size: 140%; 
+color: red;
+}
+.my_disabled {
+    color: white;
+}

@@ -26,7 +26,7 @@ function getRelativeDate(date) {
   const nextWeekEnd = new Date(nextWeekStart);
   nextWeekEnd.setDate(nextWeekStart.getDate() + 6);
   if (date < prevToday) {
-    return "Потрачено. "
+    return "Вчера. "
   }
   if (isSameDate(date, today)) {
     return 'Сегодня. ';
@@ -44,7 +44,7 @@ function getRelativeDate(date) {
 function DateInfo({ date }) {
   const result = getRelativeDate(new Date(date));
 
-  return <span> {result}</span>;
+  return <span>{result}</span>;
 }
 
 export default DateInfo;

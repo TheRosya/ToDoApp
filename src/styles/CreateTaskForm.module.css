@@ -1,21 +1,6 @@
-.body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    background-color: rgba(10, 10, 10, 0.7);
-
-    z-index: 10;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-}
-
-
 .container {
     background-color: #212529;
-    width: 35rem;
+    width: 40rem;
     padding: 2rem;
     border-radius: 0.25rem;
     position: relative;
@@ -23,27 +8,32 @@
     border-radius: 16px;
 }
 
+
+.container.disabled {
+    display: none;
+}
+
 .close_button {
-    border: 1px solid #212529;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     top: 0px;
     right: 0px;
-    margin-top: 0.5rem;
-    margin-right: 0.5rem;
+
     color: gray;
-    font-weight: 600;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 25%;
+    padding: 2rem;
+    border-top-right-radius: 25%;
 }
 
-.close_button:hover {
-    border: 1px solid gray;
+
+.close_icon {
+    font-size: 24px;
+
 }
 
 .input {
+    margin-bottom: 4px;
     border: 1px;
     background-color: #212529;
     border-radius: 0.25rem;
@@ -81,28 +71,29 @@
 }
 
 .add_button {
+    height: fit-content;
     background-color: #7161ef;
     color: white;
+    font-size: 24px;
     font-weight: 600;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     border-radius: 0.5rem;
     transition: 0.3s ease-out;
 
-    
-
 }
+
 .add_button:hover {
-    background-color: #5e548e;
+    background-color: #5232ff;
 }
 
 .add_button:disabled {
     /* Стили неактивной кнопки */
     background-color: gray;
     color: #383838;
-  }
+}
 
 .add_button:hover:disabled {
     background-color: gray;

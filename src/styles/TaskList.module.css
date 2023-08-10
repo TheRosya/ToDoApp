@@ -9,13 +9,9 @@
 .task_no_found {
     font-size: 36px;
     color: white;
-  
+    margin-top: 30px;
     /* Устанавливаем выравнивание по центру */
     text-align: center;
-  
-    /* Убираем отступы вокруг элемента */
-    margin: 0;
-    padding: 0;
 }
 
 

@@ -1,0 +1,41 @@
+.rdp-button {
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+}
+
+.rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+    background-color: #7161ef;
+    color: black;
+}
+
+.rdp-day_selected,
+.rdp-day_selected:focus-visible,
+.rdp-day_selected:hover {
+    color: black;
+    background-color: #7161ef;
+    cursor: default;
+}
+
+.rdp-day_selected:focus-visible {
+    background-color: #7161ef;
+    /* Since the background is the same use again the outline */
+    color: white;
+    z-index: 1;
+  }
+
+.rdp-weeknumber,
+.rdp-day {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--rdp-cell-size);
+  max-width: var(--rdp-cell-size);
+  height: var(--rdp-cell-size);
+  margin: 0;
+  border: 2px solid transparent;
+  border-radius: 100%;
+}
+
+

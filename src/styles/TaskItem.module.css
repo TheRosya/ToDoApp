@@ -5,8 +5,7 @@
 
 .card {
   padding: 1rem;
-  border-top-width: 2px;
-  border-top-color: gray;
+  border-top: 2px solid gray;
 }
 
 

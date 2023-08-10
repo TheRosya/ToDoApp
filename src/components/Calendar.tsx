@@ -1,28 +1,37 @@
 import styles from "./../styles/Calendar.module.css"
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from  "react-datepicker";
 import ru from 'date-fns/locale/ru';
 import { useEffect, useState } from "react";
 registerLocale('ru', ru)
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MyModal from "../ui/MyModal/MyModal";
+import ChoiseDate from "./ChoiseDate";
 
 
 
-const Calendar = ({data, setData}) => {
+const CalendarComponent = ({data, setData, selectedOption, setOption, options, visibleDate, setVisibleDate}) => {
 
-  const [selectedOption, setSelectedOption] = useState('today');
+  const isSame = (date1, date2) => {
+    const today = new Date();
+    return (
+      date1.getDate() === date2.getDate() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getFullYear() === date2.getFullYear()
+    );
+  }
 
   const handleDateChange = (date) => {
-    setSelectedOption('custom');
-    setData(prev => ({...prev,
-      date: date,
-    }));
+    if (date) {
+      setData(prev => ({...prev,
+        date: date,
+      }));
+    }
   };
 
-  const handleOptionChange = (option) => {
-    setSelectedOption(option);
+  useEffect(() => {
+    let date = data.date
     const today = new Date();
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
@@ -30,66 +39,60 @@ const Calendar = ({data, setData}) => {
     const afterTomorrow = new Date();
     afterTomorrow.setDate(today.getDate() + 2);
 
-    switch (option) {
-      case 'today':
-        setData(prev => ({...prev,
-          date: today,
-        }));
-        break;
-      case 'tomorrow':
-        setData(prev => ({...prev,
-          date: tomorrow,
-        }));
-        break;
-      case 'afterTomorrow':
-        setData(prev => ({...prev,
-          date: afterTomorrow,
-        }));
-        break;
-      default:
-        setData(prev => ({...prev,
-          date: null,
-        }));
+    if (date === null) {
+      return
     }
-  };
 
-  useEffect(() => {
-    setData(prev => ({...prev,
-      date: new Date(),
-    }));
-  }, [])
+    if (isSame(date, today)) {
+      setOption(options[0])
+    } else if (isSame(date, tomorrow)) {
+      setOption(options[1])
+    } else if (isSame(date, afterTomorrow)) {
+      setOption(options[2])
+    } else {
+      setOption(options[3])
+    }
 
+  }, [data.date] )
 
+  // Функция для форматирования даты на русском языке
+  const formatDate = (date) => {
+    const options = {
+        month: 'short',
+        day: 'numeric',
+    };
+
+    let formattedDate = date.toLocaleDateString('ru-RU', options);
+    return formattedDate
+  }
   return ( 
-    <div className={styles.container}>
-      <div className={styles.datePicker}>
-        <FontAwesomeIcon icon={faCalendarAlt} size="2x" />
-        <select className={styles.select} value={selectedOption} onChange={(e) => handleOptionChange(e.target.value)}>
-            <option value="today">Сегодня</option>
-            <option value="tomorrow">Завтра</option>
-            <option value="afterTomorrow">Послезавтра</option>
-            <option value="custom">Выбрать другую дату</option>
-        </select>
-            
-    </div>
-      {selectedOption === 'custom' && (
-        <DatePicker
-          className={styles.calendar_icon}
-          id="datePicker"
-          title="Календарь"
+    <div>
+      <MyModal visible={visibleDate} setVisible={setVisibleDate}>
+        <ChoiseDate
           selected={data.date}
-          dateFormat="dd/MM/yyyy"
-          placeholderText="-/-/-"
           onChange={handleDateChange}
-          locale='ru'
-          withPortal
-          fixedHeight
-          minDate={new Date()}
+          setVisibleDate={setVisibleDate}
+          />
+      </MyModal>
+      <div
+        className={styles.container}
+        onClick={() => {
+          setVisibleDate(true)
+        }}
+        >
+        <FontAwesomeIcon
+          icon={faCalendar} size="1x"
+          className={styles.calendar_icon}
         />
-      )}
+          {selectedOption.value === 'custom' ? (
+            <span className={styles.text}>{formatDate(data.date)}</span>
+          ) : (<span className={styles.text}>{selectedOption.label}</span>)}
+          
+      </div>
     </div>
+
 
   )
 }   
 
-export default Calendar;
+export default CalendarComponent;
