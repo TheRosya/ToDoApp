@@ -1,6 +1,6 @@
 import styles from './MyModal.module.css'
 
-const MyModal = ({children, visible, setVisible}) => {
+const MyModal = ({children, visible, onSideClick}) => {
 
     const rootClasses = [styles.MyModal]
 
@@ -11,7 +11,7 @@ const MyModal = ({children, visible, setVisible}) => {
     }
 
     return (
-        <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
+        <div className={rootClasses.join(' ')} onClick={onSideClick}>
             <div onClick={(e) => e.stopPropagation()}>
                 {children}
             </div>

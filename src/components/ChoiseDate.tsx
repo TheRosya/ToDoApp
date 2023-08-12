@@ -1,28 +1,26 @@
 import styles from "./../styles/ChoiseDate.module.css"
 import { DayPicker } from 'react-day-picker'
-import { faLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { faSun, faFontAwesome, faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ru } from 'date-fns/locale';
 import 'react-day-picker/dist/style.css';
 import './../styles/calendar.css';
+import { useEffect } from "react";
 
-
-
-const today = new Date();
-const prevDay = new Date();
-prevDay.setDate(today.getDate() - 1);
-const tomorrow = new Date();
-tomorrow.setDate(today.getDate() + 1);
-const afterTomorrow = new Date();
-afterTomorrow.setDate(today.getDate() + 2);
-
-const disabledDays = [
-    { from: new Date(1970, 1, 1), to: prevDay }
-]
 
 const ChoiseDate = ({selected, onChange, setVisibleDate}) => {
     
+    const today = new Date();
+    const prevDay = new Date();
+    prevDay.setDate(today.getDate() - 1);
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+    const afterTomorrow = new Date();
+    afterTomorrow.setDate(today.getDate() + 2);
+    const disabledDays = [
+        { from: new Date(1970, 1, 1), to: prevDay }
+    ]
+
     return (
         <div className={styles.container}>
             <div className={styles.buttons}>

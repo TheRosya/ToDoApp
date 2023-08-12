@@ -1,11 +1,36 @@
-.task-item {
-  transition: opacity 0.3s ease-out; /* Применяет плавное затухание и плавный уход вверх */
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item_icons {
+  display: none;
+  color: lightslategray;
+  padding: 4px;
+  transition: 0.3s ease;
+  font-size: 24px;
+}
+
+.task_item {
+  min-width: 100%;
+  cursor: pointer;
+}
+
+
+.item_icons:hover {
+  background-color: #343a40;
 }
 
 
 .card {
+  width: 100%;
   padding: 1rem;
   border-top: 2px solid gray;
+}
+
+.card:hover .item_icons {
+  display: block;
 }
 
 
@@ -20,6 +45,20 @@
 .description {
   color: #d6d6d6;
   text-align: justify;  
+}
+
+.description_container {
+  max-height: 50px;
+  /* max-width: 60%; */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  position: relative; /* Добавляем позиционирование, чтобы увеличивать стрелку */
+  padding-right: 30px;
+}
+
+.description_container.expanded {
+  max-height: none;
+  max-width: inherit;
 }
 
 .btn {
@@ -47,17 +86,6 @@
   background-color: #14B973;
 }
 
-.description_container {
-  max-height: 50px;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  position: relative; /* Добавляем позиционирование, чтобы увеличивать стрелку */
-  padding-right: 30px;
-}
-
-.description_container.expanded {
-  max-height: none;
-}
 
 .arrow_container {
   display: flex;

@@ -1,9 +1,10 @@
 import TaskItem from "./TaskItem";
 import styles from './../styles/TaskList.module.css'
 import DateInfo from "./DateInfo";
+import { useMemo } from "react";
 
 
-const TaskList = ({ tasks, setTasks }) => {
+const TaskList = ({ tasks, setTasks, setSelectedTask }) => {
     
 
     if (!tasks.length) {
@@ -32,11 +33,11 @@ const TaskList = ({ tasks, setTasks }) => {
         const tasksForDate = tasks.filter(task => new Date(task.date).toDateString() === date.toDateString());
 
         return (
-            <div key={date.toDateString()}>
+            <div key={date.toDateString()} className={styles.items}>
                 <h3 className={styles.relative_date}><DateInfo date={date} />{formatDate(date)}</h3>
                 <ul>
                     {tasksForDate.map(task => (
-                        <TaskItem key={task.id} task={task} setTasks={setTasks}/>
+                        <TaskItem key={task.id} task={task} setTasks={setTasks} setSelectedTask={setSelectedTask}/>
                     ))}
                 </ul>
             </div>
@@ -44,13 +45,14 @@ const TaskList = ({ tasks, setTasks }) => {
     };
 
     // Создаем массив уникальных дат из задач
-    const uniqueDates = Array.from(new Set(tasks.map(task => new Date(task.date).toDateString()))).map(dateString => new Date(dateString));
+    const uniqueDates = useMemo(() => {
+        return Array.from(new Set(tasks.map(task => new Date(task.date).toDateString()))).map(dateString => new Date(dateString));
+    }, [tasks])
+
 
     return (
-        <div className="container mx-auto mt-8">
-          <div className="grid md:grid-cols-1" style={{marginBottom: 60}}>
+        <div className={styles.grid}>
           {uniqueDates.map(date => renderTaskBlock(date))}
-          </div>
         </div>
     )
 };
