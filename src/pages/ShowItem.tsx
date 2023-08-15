@@ -50,7 +50,7 @@ const ShowItem = ({ setTasks, selectedTask, setSelectedTask }) => {
                 >
                 <input value={updatedTask.title} onChange={(event) => setUpdatedTask(prev => ({...prev, title : event.target.value}))} />
                 <textarea onChange={(event) => setUpdatedTask(prev => ({...prev, shortDescription : event.target.value}))} value={updatedTask.shortDescription} />
-                <span onClick={() => {
+                <span style={{cursor: `pointer`}} onClick={() => {
                     setShowDatePicker(true)
                 }}>{formatDate(new Date(updatedTask.date))}</span>
                 {trueIfModified && (

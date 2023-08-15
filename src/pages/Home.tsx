@@ -7,6 +7,8 @@ import MyModal from "../ui/MyModal/MyModal.tsx";
 import CreateTaskform from "../components/CreateTaskForm.tsx";
 import 'react-day-picker/dist/style.css';
 import ShowItem from "./ShowItem.tsx";
+import SettingView from "../components/SettingView.tsx";
+import Example from "../components/Test.tsx";
 
 function Home() {
 
@@ -44,8 +46,11 @@ function Home() {
 
   
   return (
+    
     <div className='text-xl'>
+      {/* <Example /> */}
       {/* <Header /> */}
+      <SettingView />
       <TaskList tasks={sortedList} setTasks={setTasks} setSelectedTask={setSelectedTask} />
       {selectedTask &&
         (
