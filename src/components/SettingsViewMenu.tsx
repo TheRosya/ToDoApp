@@ -1,10 +1,13 @@
-const SettingsViewMenu = () => {
+
+
+const SettingsViewMenu = ({ setView }) => {
+
     return (
         <div>
             <ul>
-                <li>Лента</li>
-                <li>По дням</li>
-                <li>По неделям</li>
+                <li onClick={() => setView('infinity')}>Лента</li>
+                <li onClick={() => setView('dayByDay')}>По дням</li>
+                <li onClick={() => setView('byWeeks')}>По неделям</li>
             </ul>
         </div>
     );

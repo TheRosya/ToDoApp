@@ -24,7 +24,7 @@ function TaskItem ({ task, setTasks, setSelectedTask }) {
           onClick={(e) => e.stopPropagation()}
           defaultValue={task.shortDescription}
           readOnly
-          />
+          /><br />
           <button className={styles.btn} onClick={
             (e) => {
               handleDeleteTask(task.id, setTasks)

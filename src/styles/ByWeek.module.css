@@ -1,0 +1,59 @@
+.items {
+    margin: 0 auto;
+    min-width: fit-content;
+    
+}
+
+.relative_date {
+    font-size: 30px;
+    color: white;
+    margin-top: 32px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid gray;
+}
+
+.task_no_found {
+    font-size: 36px;
+    color: white;
+    margin-top: 30px;
+    /* Устанавливаем выравнивание по центру */
+    text-align: center;
+}
+
+
+.grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    column-gap: 16px;
+
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin: 0 16px;
+}
+
+.header__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 12%;
+    border-bottom: 1px solid gray;
+}
+
+.header__item:hover {
+    cursor: pointer;
+    border-bottom: 2px solid mediumslateblue;
+}
+
+
+
+  
+
+  
+ 
+  
+  

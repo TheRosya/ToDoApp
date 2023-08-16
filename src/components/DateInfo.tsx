@@ -34,9 +34,10 @@ function getRelativeDate(date) {
     return 'Завтра. ';
   } else if (isSameDate(date, dayAfterTomorrow)) {
     return 'Послезавтра. ';
-  } else if (daysDifference >= 0 && date >= currentWeekStart && date <= currentWeekEnd) {
-    return 'В течениe семи дней. ';
-  } else {
+  // } else if (daysDifference >= 0 && date >= currentWeekStart && date <= currentWeekEnd) {
+  //   return 'В течениe семи дней. ';
+  // } 
+   } else {
     return ''
   }
 }

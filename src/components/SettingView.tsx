@@ -5,7 +5,7 @@ import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import SettingsViewMenu from "./SettingsViewMenu";
 
 
-const SettingView = () => {
+const SettingView = ({ setView }) => {
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -13,11 +13,8 @@ const SettingView = () => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
-    
-
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popper' : undefined;
-
 
     return (
         <div className='flex flex-col items-end text-right pt-4 pr-4'>
@@ -31,7 +28,7 @@ const SettingView = () => {
                     </button>
 
                     <Popper id={id} open={open} anchorEl={anchorEl}>
-                        <SettingsViewMenu />
+                        <SettingsViewMenu setView={setView}/>
                     </Popper>
                 </div>
             </ClickAwayListener>

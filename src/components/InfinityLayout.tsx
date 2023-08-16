@@ -21,7 +21,6 @@ const TaskList = ({ tasks, setTasks, setSelectedTask }) => {
             day: 'numeric',
         };
 
-
         let formattedDate = date.toLocaleDateString('ru-RU', options);
 
         formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);

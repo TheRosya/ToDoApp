@@ -1,6 +1,7 @@
 .items {
     margin: 0 auto;
     min-width: 65vw;
+    overflow-y: auto;
 }
 
 .relative_date {
