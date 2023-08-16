@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { invoke } from '@tauri-apps/api/tauri'
 import Header from "../components/Header.tsx";
 import AddButton from "../components/AddButton.tsx";
@@ -7,9 +7,7 @@ import CreateTaskform from "../components/CreateTaskForm.tsx";
 import 'react-day-picker/dist/style.css';
 import ShowItem from "./ShowItem.tsx";
 import SettingView from "../components/SettingView.tsx";
-import InfinityLayout from "../components/InfinityLayout.tsx";
-import DayByDayTask from "../components/DayByDayTasks.tsx";
-import ByWeeks from "../components/ByWeeks.tsx";
+import ShowTasks from "../components/ShowTasks.tsx";
 
 
 function Home() {
@@ -35,12 +33,6 @@ function Home() {
     }
   }, [tasks]);
   
-  const sortedList = useMemo(() => {
-    if (tasks) {
-      return [...tasks].slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    }
-    return []
-  }, [tasks]);
 
   const OpenModal = () => {
     setVisibleModal(true);
@@ -51,15 +43,7 @@ function Home() {
     
     <div className='text-xl'>
       <SettingView setView={setView}/>
-      {view === 'infinity' && (
-        <InfinityLayout tasks={sortedList} setTasks={setTasks} setSelectedTask={setSelectedTask} />
-      )}
-      {view === 'dayByDay' && (
-        <DayByDayTask tasks={sortedList} setTasks={setTasks} setSelectedTask={setSelectedTask} />
-      )}
-      {view === 'byWeeks' && (
-        <ByWeeks tasks={sortedList} setTasks={setTasks} setSelectedTask={setSelectedTask} />
-      )}
+      <ShowTasks view={view} tasks={tasks} setTasks={setTasks} setSelectedTask={setSelectedTask}/>
       {selectedTask &&
         (
           <ShowItem key={selectedTask.id} setTasks={setTasks} selectedTask={selectedTask} setSelectedTask={setSelectedTask}/>

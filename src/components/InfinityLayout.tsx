@@ -2,6 +2,8 @@ import TaskItem from "./TaskItem";
 import styles from './../styles/TaskList.module.css'
 import DateInfo from "./DateInfo";
 import { useMemo } from "react";
+import formatDate from "../services/formatDate";
+import getRelativeDate from "../services/getRelativeDate";
 
 
 const TaskList = ({ tasks, setTasks, setSelectedTask }) => {
@@ -13,19 +15,6 @@ const TaskList = ({ tasks, setTasks, setSelectedTask }) => {
         )
     }
     
-    // Функция для форматирования даты на русском языке
-    const formatDate = (date) => {
-        const options = {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-        };
-
-        let formattedDate = date.toLocaleDateString('ru-RU', options);
-
-        formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-        return formattedDate;
-    };
 
     // Функция для отображения блока с задачами для конкретной даты
     const renderTaskBlock = (date) => {
@@ -33,7 +22,7 @@ const TaskList = ({ tasks, setTasks, setSelectedTask }) => {
 
         return (
             <div key={date.toDateString()} className={styles.items}>
-                <h3 className={styles.relative_date}><DateInfo date={date} />{formatDate(date)}</h3>
+                <h3 className={styles.relative_date}>{getRelativeDate(date)}{formatDate(date)}</h3>
                 <ul>
                     {tasksForDate.map(task => (
                         <TaskItem key={task.id} task={task} setTasks={setTasks} setSelectedTask={setSelectedTask}/>
