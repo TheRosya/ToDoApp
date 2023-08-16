@@ -1,6 +1,6 @@
 .items {
     margin: 0 auto;
-    min-width: fit-content;
+    min-width: 400px;
     
 }
 
@@ -35,6 +35,20 @@
     margin: 0 16px;
 }
 
+.changeWeekButton {
+    color: white;
+    margin: 8px;
+    transition: 0.3s ease;
+}
+
+.changeWeekButton.active:hover {
+    background-color: slateblue;
+}
+
+.changeWeekButton.disabled {
+    color: gray;
+}
+
 .header__item {
     display: flex;
     flex-direction: column;
@@ -44,10 +58,18 @@
     border-bottom: 1px solid gray;
 }
 
-.header__item:hover {
+.header__item.disabled {
+    cursor:default;
+    color: gray;
+}
+
+
+.header__item.active:hover {
     cursor: pointer;
     border-bottom: 2px solid mediumslateblue;
 }
+
+
 
 
 

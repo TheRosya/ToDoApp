@@ -5,12 +5,38 @@ import formatDate from "../services/formatDate";
 import formatWeekday from "../services/formatWeekday";
 import formatDay from "../services/formatDay";
 import getRelativeDate from "../services/getRelativeDate";
+import isSameDate from "../services/isSameDate";
 
 const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
 
+
+    const today = new Date()
+
     const [date, setDate] = useState(new Date())
 
-    
+    const ifButtonDisabled = (date, baseStyle) => {
+        
+        let rootClass = [baseStyle]
+        
+        if (new Date(date) < today) {
+            rootClass.push(styles.disabled)
+        } else {
+            rootClass.push(styles.active)
+        }
+        return rootClass.join(' ')
+    }
+
+    const ifPrevWeekDisabled = (baseStyle) => {
+        
+        let rootClass = [baseStyle]
+        
+        if (today > week[0] || isSameDate(today, week[0])) {
+            rootClass.push(styles.disabled)
+        } else {
+            rootClass.push(styles.active)
+        }
+        return rootClass.join(' ')
+    };
 
     const week = useMemo(() => {
 
@@ -28,7 +54,10 @@ const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
             array.push(new Date(currentDate));
             currentDate.setDate(currentDate.getDate() + 1)
         };
+
+        console.log(array[0] < today)
         return array
+        
     }, [date])
 
 
@@ -50,14 +79,16 @@ const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
 
     return (
         <>
-            <button onClick={() => {
-                setDate(prev => {
+            <button
+                className={ifPrevWeekDisabled(styles.changeWeekButton)}
+                onClick={() => {setDate(prev => {
                     let newDay = new Date(prev);
-                    newDay.setDate(prev.getDate() - 7)
+                    newDay.setDate(prev.getDate() - 7);
                     return newDay 
-                })
-            }}>Прошлая неделя</button>
-            <button onClick={() => {
+                })}}
+                disabled={today > week[0] || isSameDate(today, week[0]) ? true : false}
+                >Прошлая неделя</button>
+            <button className={styles.changeWeekButton} onClick={() => {
                 setDate(prev => {
                     let newDay = new Date(prev);
                     newDay.setDate(prev.getDate() + 7)
@@ -69,7 +100,7 @@ const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
                 {week.map(date => 
                 (
                     <div
-                    className={styles.header__item}>
+                    className={ifButtonDisabled(date, styles.header__item)}>
                         <h1>{formatWeekday(date)}</h1>
                         <h1>{formatDay(date)}</h1>
                     </div>
