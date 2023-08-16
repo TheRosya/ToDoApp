@@ -1,11 +1,16 @@
 import { useMemo, useState } from "react";
 import TaskItem from "./TaskItem";
-import DateInfo from "./DateInfo";
 import styles from '../styles/ByWeek.module.css'
+import formatDate from "../services/formatDate";
+import formatWeekday from "../services/formatWeekday";
+import formatDay from "../services/formatDay";
+import getRelativeDate from "../services/getRelativeDate";
 
 const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
 
     const [date, setDate] = useState(new Date())
+
+    
 
     const week = useMemo(() => {
 
@@ -26,43 +31,6 @@ const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
         return array
     }, [date])
 
-    // Функция для форматирования даты на русском языке
-    const formatDate = (date) => {
-        const options = {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-        };
-
-        let formattedDate = date.toLocaleDateString('ru-RU', options);
-
-        formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-        return formattedDate;
-    };
-
-    // Функция для форматирования даты на русском языке
-    const formatWeekday = (date) => {
-        const options = {
-            weekday: 'short',
-            
-        };
-
-        let formattedDate = date.toLocaleDateString('ru-RU', options);
-
-        formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-        return formattedDate;
-    };
-
-    // Функция для форматирования даты на русском языке
-    const formatDay = (date) => {
-        const options = {
-            day: 'numeric',
-        };
-
-        let formattedDate = date.toLocaleDateString('ru-RU', options);
-
-        return formattedDate;
-    };
 
     // Функция для отображения блока с задачами для конкретной даты
     const renderTaskBlock = (date) => {
@@ -70,7 +38,7 @@ const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
 
         return (
             <div key={date.toDateString()} className={styles.items}>
-                <h3 className={styles.relative_date}><DateInfo date={date} />{formatDate(date)}</h3>
+                <h3 className={styles.relative_date}>{getRelativeDate(date)}{formatDate(date)}</h3>
                 <ul>
                     {tasksForDate.map(task => (
                         <TaskItem key={task.id} task={task} setTasks={setTasks} setSelectedTask={setSelectedTask}/>
@@ -101,9 +69,7 @@ const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
                 {week.map(date => 
                 (
                     <div
-                    className={styles.header__item}
-                    onClick={() => setDate(date)}
-                    >
+                    className={styles.header__item}>
                         <h1>{formatWeekday(date)}</h1>
                         <h1>{formatDay(date)}</h1>
                     </div>
