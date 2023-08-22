@@ -1,14 +1,15 @@
-
-
-const SettingsViewMenu = ({ setView }) => {
-
+function SettingsViewMenu ({ view, setView }) {
+    console.log('render SettingViewMenu')
     return (
-        <div>
-            <ul>
-                <li onClick={() => setView('infinity')}>Лента</li>
-                <li onClick={() => setView('dayByDay')}>По дням</li>
-                <li onClick={() => setView('byWeeks')}>По неделям</li>
-            </ul>
+        <div className="menu">
+            <span>Способ отображения</span>
+            <select
+                value = {view}
+                onChange={(event) => setView(event.target.value)}>
+                <option value='infinity'>Лента</option>
+                <option value='dayByDay'>По дням</option>
+                <option value='byWeeks'>По неделям</option>
+            </select>
         </div>
     );
 };

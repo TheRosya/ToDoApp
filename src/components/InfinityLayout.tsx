@@ -1,17 +1,16 @@
 import TaskItem from "./TaskItem";
-import styles from './../styles/TaskList.module.css'
-import DateInfo from "./DateInfo";
+import './../styles/TaskList.css';
 import { useMemo } from "react";
-import formatDate from "../services/formatDate";
-import getRelativeDate from "../services/getRelativeDate";
+import { formatDate } from "../services/formatDate";
+import { getRelativeDate } from "../services/getRelativeDate";
 
 
-const TaskList = ({ tasks, setTasks, setSelectedTask }) => {
-    
+function TaskList ({ tasks, setTasks, setSelectedTask }) {
+    console.log('render TaskList')
 
     if (!tasks.length) {
         return (
-            <p className={styles.task_no_found}>Нет задач</p>
+            <p className='task_no_found'>Нет задач</p>
         )
     }
     
@@ -21,8 +20,8 @@ const TaskList = ({ tasks, setTasks, setSelectedTask }) => {
         const tasksForDate = tasks.filter(task => new Date(task.date).toDateString() === date.toDateString());
 
         return (
-            <div key={date.toDateString()} className={styles.items}>
-                <h3 className={styles.relative_date}>{getRelativeDate(date)}{formatDate(date)}</h3>
+            <div key={date.toDateString()} className='items'>
+                <h3 className='relative_date'>{getRelativeDate(date)}{formatDate(date)}</h3>
                 <ul>
                     {tasksForDate.map(task => (
                         <TaskItem key={task.id} task={task} setTasks={setTasks} setSelectedTask={setSelectedTask}/>
@@ -39,7 +38,7 @@ const TaskList = ({ tasks, setTasks, setSelectedTask }) => {
 
 
     return (
-        <div className={styles.grid}>
+        <div className='grid'>
           {uniqueDates.map(date => renderTaskBlock(date))}
         </div>
     )

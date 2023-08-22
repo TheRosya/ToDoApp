@@ -2,6 +2,7 @@
     background-color: #212529;
     width: 40rem;
     padding: 2rem;
+    padding-top: 0rem;
     border-radius: 0.25rem;
     position: relative;
     min-width: max-content;
@@ -14,15 +15,15 @@
 }
 
 .close_button {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 8px;
+    right: 8px;
 
     color: gray;
-    padding: 2rem;
     border-top-right-radius: 25%;
 }
 
@@ -33,6 +34,7 @@
 }
 
 .input {
+    margin-top: 32px;
     margin-bottom: 4px;
     border: 1px;
     background-color: #212529;
@@ -53,6 +55,7 @@
 
 .textarea {
     border: 1px;
+    font-size: 20px;
     background-color: #212529;
     border-radius: 0.25rem;
     width: 100%;
@@ -70,7 +73,7 @@
     outline: none;
 }
 
-.add_button {
+.post_button {
     height: fit-content;
     background-color: #7161ef;
     color: white;
@@ -85,17 +88,17 @@
 
 }
 
-.add_button:hover {
+.post_button:hover {
     background-color: #5232ff;
 }
 
-.add_button:disabled {
+.post_button:disabled {
     /* Стили неактивной кнопки */
     background-color: gray;
     color: #383838;
 }
 
-.add_button:hover:disabled {
+.post_button:hover:disabled {
     background-color: gray;
 }
 

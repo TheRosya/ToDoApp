@@ -1,35 +1,38 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import TaskItem from "./TaskItem";
-import DateInfo from "./DateInfo";
-import styles from './../styles/TaskList.module.css'
-import formatDate from "../services/formatDate";
+import './../styles/TaskList.css'
+import { formatDate } from "../services/formatDate";
 
-const DayByDayTask = ({tasks, setTasks, setSelectedTask}) => {
-
+function DayByDayTask ({tasks, setTasks, setSelectedTask}) {
+    console.log('render DayByDay')
     const [currentDay, setCurrentDay] = useState(new Date());
 
     const tasksForDate = tasks.filter(task => new Date(task.date).toDateString() === currentDay.toDateString());
 
     return (
-        <div className={styles.grid}>
-            <div className={styles.items}>
-                <div className={styles.relative_date}>
+        <div className='grid'>
+            <div className='items'>
+                <nav className="nav_days">
                     <button onClick={() => {
                         setCurrentDay(prev => {
                             const newDay = new Date(prev)
                             newDay.setDate(prev.getDate() - 1)
                             return newDay
                         })
-                    }}>Назад в прошлое</button>
-                    {formatDate(currentDay)}
+                    }}
+                    className="nav_days__button"
+                    >Назад в прошлое</button>
+                    <span className='relative_date'>{formatDate(currentDay)}</span>
                     <button onClick={() => {
                         setCurrentDay(prev => {
                             const newDay = new Date(prev)
                             newDay.setDate(prev.getDate() + 1)
                             return newDay
                         })
-                    }}>Назад в будущее</button>
-                </div>
+                    }}
+                    className="nav_days__button"
+                    >Назад в будущее</button>
+                </nav>
                 <ul>
                     {tasksForDate.map(task => (
                         <TaskItem key={task.id} task={task} setTasks={setTasks} setSelectedTask={setSelectedTask}/>

@@ -1,7 +1,12 @@
-import isSameDate from "./isSameDate";
-
+export function isSameDate(date1, date2) {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+};
   
-function getRelativeDate(date) {
+export function getRelativeDate(date) {
     date = new Date(date)
     const today = new Date();
     const tomorrow = new Date(today);
@@ -37,6 +42,3 @@ function getRelativeDate(date) {
       return ''
     }
 }
-
-export default getRelativeDate;
-

@@ -1,30 +1,19 @@
 import { useMemo, useState } from "react";
-import Modalstyles from "../ui/MyModal/MyModal.module.css";
-import handleEditTask from "../services/handleEditTask";
+import { handleEditTask } from "../services/tasksHandlers";
 import MyModal from "../ui/MyModal/MyModal";
 import ChoiseDate from "../components/ChoiseDate";
+import { formatDate } from "../services/formatDate";
 
 
-const ShowItem = ({ setTasks, selectedTask, setSelectedTask }) => {
+function ShowItem ({ setTasks, selectedTask, setSelectedTask }) {
+    console.log('render ShowItem')
+    if (!(selectedTask)) {
+        return null;
+    }
 
     const [updatedTask, setUpdatedTask] = useState({...selectedTask});
     const [showAlert, setShowAlert] = useState(false)
     const [showDatePicker, setShowDatePicker] = useState(false)
-
-    // Функция для форматирования даты на русском языке
-    const formatDate = (date) => {
-        const options = {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-        };
-
-
-        let formattedDate = date.toLocaleDateString('ru-RU', options);
-
-        formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-        return formattedDate;
-    };
     
 
     const trueIfModified = useMemo(() => {
@@ -40,12 +29,11 @@ const ShowItem = ({ setTasks, selectedTask, setSelectedTask }) => {
                     setShowAlert(true);
                 } else {
                     setSelectedTask(null);
-                }
-            }    
+                }}    
             }>
             <div className="flex">
             <div
-                className='container bg-white flex flex-col'
+                className='flex flex_column'
                 onClick={(e) => e.stopPropagation()}
                 >
                 <input value={updatedTask.title} onChange={(event) => setUpdatedTask(prev => ({...prev, title : event.target.value}))} />
@@ -68,34 +56,31 @@ const ShowItem = ({ setTasks, selectedTask, setSelectedTask }) => {
                         </button>
                         
                     </div>
-                )
-                }
-            </div>
-            {showDatePicker && (
-                    <ChoiseDate 
-                        selected={updatedTask.date}
-                        setVisibleDate={setShowDatePicker}
-                        onChange={(date) => {
-                            setUpdatedTask(prev => ({...prev, date : date}))
-                    }}/>
                 )}
             </div>
-        </MyModal>
-        {showAlert && (
-            <MyModal visible={showAlert} onSideClick={() => {setShowAlert(false)}}>
-                <div className="container bg-slate-500 max-w-full">
-                    <p>Вы точно хотите уйти? Изменения не буду сохранены</p>
-                    <button onClick={() => {
-                        setShowAlert(false);
-                    }
-                    }>Отмена</button>
-                    <button onClick={() => {
-                        setSelectedTask(null);
-                        setShowAlert(false);
-                    }}>Продолжить</button>
-                </div>
+            <MyModal visible={showDatePicker} onSideClick={() => {setShowDatePicker(false)}}>
+                <ChoiseDate 
+                    selected={updatedTask.date}ss
+                    setVisibleDate={setShowDatePicker}
+                    onChange={(date) => {
+                        setUpdatedTask(prev => ({...prev, date : date}))
+                }}/>
             </MyModal>
-        )}
+            </div>
+        </MyModal>
+        <MyModal visible={showAlert} onSideClick={() => {setShowAlert(false)}}>
+            <div className="">
+                <p>Вы точно хотите уйти? Изменения не буду сохранены</p>
+                <button onClick={() => {
+                    setShowAlert(false);
+                }
+                }>Отмена</button>
+                <button onClick={() => {
+                    setSelectedTask(null);
+                    setShowAlert(false);
+                }}>Продолжить</button>
+            </div>
+        </MyModal>
         </div>
     );
 };

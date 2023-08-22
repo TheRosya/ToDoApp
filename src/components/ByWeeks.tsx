@@ -1,20 +1,17 @@
 import { useMemo, useState } from "react";
 import TaskItem from "./TaskItem";
 import styles from '../styles/ByWeek.module.css'
-import formatDate from "../services/formatDate";
-import formatWeekday from "../services/formatWeekday";
-import formatDay from "../services/formatDay";
-import getRelativeDate from "../services/getRelativeDate";
-import isSameDate from "../services/isSameDate";
+import { formatDate, formatDay, formatWeekday } from "../services/formatDate";
+import { isSameDate, getRelativeDate } from "../services/getRelativeDate";
 
-const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
+function ByWeeks ({tasks, setTasks, setSelectedTask}) {
 
 
     const today = new Date()
 
     const [date, setDate] = useState(new Date())
 
-    const ifButtonDisabled = (date, baseStyle) => {
+    function ifButtonDisabled (date, baseStyle) {
         
         let rootClass = [baseStyle]
         
@@ -26,7 +23,7 @@ const ByWeeks = ({tasks, setTasks, setSelectedTask}) => {
         return rootClass.join(' ')
     }
 
-    const ifPrevWeekDisabled = (baseStyle) => {
+    function ifPrevWeekDisabled (baseStyle) {
         
         let rootClass = [baseStyle]
         

@@ -1,8 +1,21 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 @import './reset.css';
 
 body {
     background-color: #212529;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex_column {
+    flex-direction: column;
+} 
+
+.flex_row {
+    flex-direction: row;
+} 
+
+.flex_wrap {
+    flex-wrap: wrap;
 }

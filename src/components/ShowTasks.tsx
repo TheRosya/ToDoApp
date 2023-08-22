@@ -4,8 +4,8 @@ import DayByDayTask from "./DayByDayTasks"
 import InfinityLayout from "./InfinityLayout";
 
 
-const ShowTasks = ({ view, tasks, setTasks, setSelectedTask }) => {
-
+function ShowTasks ({ view, tasks, setTasks, setSelectedTask }) {
+    console.log('render ShowTasks')
     const sortedList = useMemo(() => {
         if (tasks) {
           return [...tasks].slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());

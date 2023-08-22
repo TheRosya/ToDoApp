@@ -1,15 +1,14 @@
 .items {
     margin: 0 auto;
-    min-width: 65vw;
+    min-width: 450px;
     overflow-y: auto;
 }
 
 .relative_date {
     font-size: 30px;
     color: white;
-    margin-top: 32px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid gray;
+    /* padding-bottom: 8px;
+    border-bottom: 2px solid gray; */
 }
 
 .task_no_found {

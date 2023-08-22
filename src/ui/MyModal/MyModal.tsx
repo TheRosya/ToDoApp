@@ -1,6 +1,6 @@
 import styles from './MyModal.module.css'
 
-const MyModal = ({children, visible, onSideClick}) => {
+function MyModal ({children, visible, onSideClick}) {
 
     const rootClasses = [styles.MyModal]
 

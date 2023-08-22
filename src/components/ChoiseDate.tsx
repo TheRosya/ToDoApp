@@ -1,14 +1,14 @@
+import React from 'react';
 import styles from "./../styles/ChoiseDate.module.css"
 import { DayPicker } from 'react-day-picker'
 import { faSun, faFontAwesome, faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ru } from 'date-fns/locale';
-import 'react-day-picker/dist/style.css';
 import './../styles/calendar.css';
-import { useEffect } from "react";
 
 
-const ChoiseDate = ({selected, onChange, setVisibleDate}) => {
+function ChoiseDate ({selected, onChange, setVisibleDate}) {
+    console.log('render ChoiseDate')
     
     const today = new Date();
     const prevDay = new Date();
