@@ -32,6 +32,8 @@
 }
 
 .item__title {
+  background-color: inherit;
+  font-family: 'IBM Plex Serif', serif;
   text-align: justify;
   color: #fff;
   width: inherit;

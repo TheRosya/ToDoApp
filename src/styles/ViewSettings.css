@@ -3,11 +3,16 @@
     margin-top: 16px;
     margin-right: 100px;
     font-size: 24px;
+    cursor: pointer;
 
 }
 
 .menu {
-    background-color: gray;
+    background-color: #495057;
     border-radius: 8px;
-    padding: 8px;
+    padding: 16px;
+}
+
+.menu_text {
+    color: #ced4da;
 }

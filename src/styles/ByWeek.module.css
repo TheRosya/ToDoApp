@@ -1,7 +1,8 @@
 .items {
     margin: 0 auto;
     min-width: 400px;
-    
+    height: 88.5vh;
+    overflow-x: auto;
 }
 
 .relative_date {

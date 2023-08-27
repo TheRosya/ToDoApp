@@ -29,7 +29,7 @@ function Home() {
   }, [tasks]);
 
   return (
-    <div className="">
+    <body>
       <SettingView view={view} setView={setView} />
       <ShowTasks
         view={view}
@@ -51,7 +51,7 @@ function Home() {
         visible={visibleCreateTaskForm}
         setVisible={setVisibleCreateTaskForm}
       />
-    </div>
+    </body>
   );
 }
 

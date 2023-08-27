@@ -7,11 +7,24 @@ const options = [
 ];
 
 function SettingsViewMenu({ view, setView }) {
-  console.log("render SettingViewMenu");
   return (
     <div className="menu">
-      <span>Способ отображения</span>
+      <span className="menu_text">Способ отображения</span>
       <Select
+        styles={{
+          container: (baseStyles) => ({
+            ...baseStyles,
+            paddingTop: 12,
+          }),
+          menu: (baseStyles) => ({
+            ...baseStyles,
+            background: "gray",
+          }),
+          option: (baseStyles, state) => ({
+            ...baseStyles,
+            background: state.isSelected ? "#725ac1" : "gray",
+          }),
+        }}
         closeMenuOnSelect={false}
         defaultValue={view}
         options={options}
