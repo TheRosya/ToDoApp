@@ -1,11 +1,13 @@
 .open_button {
     color: gray;
     margin-top: 16px;
-    margin-right: 64px;
+    margin-right: 100px;
     font-size: 24px;
 
 }
 
 .menu {
     background-color: gray;
+    border-radius: 8px;
+    padding: 8px;
 }

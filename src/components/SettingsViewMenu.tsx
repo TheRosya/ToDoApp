@@ -1,17 +1,24 @@
-function SettingsViewMenu ({ view, setView }) {
-    console.log('render SettingViewMenu')
-    return (
-        <div className="menu">
-            <span>Способ отображения</span>
-            <select
-                value = {view}
-                onChange={(event) => setView(event.target.value)}>
-                <option value='infinity'>Лента</option>
-                <option value='dayByDay'>По дням</option>
-                <option value='byWeeks'>По неделям</option>
-            </select>
-        </div>
-    );
-};
+import Select from "react-select";
+
+const options = [
+  { value: "infinity", label: "Лента" },
+  { value: "dayByDay", label: "По дням" },
+  { value: "byWeeks", label: "По неделям" },
+];
+
+function SettingsViewMenu({ view, setView }) {
+  console.log("render SettingViewMenu");
+  return (
+    <div className="menu">
+      <span>Способ отображения</span>
+      <Select
+        closeMenuOnSelect={false}
+        defaultValue={view}
+        options={options}
+        onChange={(event) => setView(event)}
+      />
+    </div>
+  );
+}
 
 export default SettingsViewMenu;

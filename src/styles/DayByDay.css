@@ -1,8 +1,7 @@
-.items {
+.day_by_day__items {
     margin: 0 auto;
-    min-width: inherit;
+    min-width: 450px;
     overflow-y: auto;
-    max-width: 587px;
 }
 
 .relative_date {

@@ -39,10 +39,13 @@
     color: white;
     margin: 8px;
     transition: 0.3s ease;
+    border-bottom: 1px solid transparent;
 }
 
 .changeWeekButton.active:hover {
-    background-color: slateblue;
+    border-bottom: 1px solid slateblue;
+    /* border-radius: 8px; */
+    cursor: pointer;
 }
 
 .changeWeekButton.disabled {
@@ -65,7 +68,6 @@
 
 
 .header__item.active:hover {
-    cursor: pointer;
     border-bottom: 2px solid mediumslateblue;
 }
 

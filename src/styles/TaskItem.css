@@ -7,7 +7,7 @@
 
 .item {
   cursor: pointer;
-  width: 450px;
+  width: inherit;
   padding: 1rem;
   border-top: 2px solid gray;
 
@@ -60,6 +60,7 @@
   margin-top: 1.5rem;
   border-radius: 1.25rem;
   transition: 0.2s ease-out;
+  cursor: pointer;
 }
 
 .item__complete_button:hover {
