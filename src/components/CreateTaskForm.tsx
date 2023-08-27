@@ -125,7 +125,6 @@ function CreateTaskform({ visible, setTasks, setVisible }) {
             data={data}
             setData={setData}
             selectedOption={selectedOption}
-            setOption={setSelectedOption}
             visibleDate={visibleDate}
             setVisibleDate={setVisibleDate}
           />
