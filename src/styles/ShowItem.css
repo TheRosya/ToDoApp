@@ -23,3 +23,20 @@
   .btn:focus:hover {
     background-color: #14B973;
   }
+
+  .alert_text {
+    color: gray;
+    font-size: 24px;
+  }
+
+  .alert_container {
+    background-color: #212529;
+    min-width: 250px;
+    max-width: 300px;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    position: relative;
+
+    border-radius: 16px;
+  }

@@ -137,23 +137,29 @@ function ShowItem({ setTasks, selectedTask, setSelectedTask }) {
           setShowAlert(false);
         }}
       >
-        <div className="">
-          <p>Вы точно хотите уйти? Изменения не буду сохранены</p>
-          <button
-            onClick={() => {
-              setShowAlert(false);
-            }}
-          >
-            Отмена
-          </button>
-          <button
-            onClick={() => {
-              setSelectedTask(null);
-              setShowAlert(false);
-            }}
-          >
-            Продолжить
-          </button>
+        <div className="alert_container">
+          <p className="alert_text">
+            Вы точно хотите уйти? Изменения не буду сохранены
+          </p>
+          <div className="flex" style={{ columnGap: "4px" }}>
+            <button
+              className="btn"
+              onClick={() => {
+                setShowAlert(false);
+              }}
+            >
+              Отмена
+            </button>
+            <button
+              className="btn"
+              onClick={() => {
+                setSelectedTask(null);
+                setShowAlert(false);
+              }}
+            >
+              Продолжить
+            </button>
+          </div>
         </div>
       </MyModal>
     </div>
